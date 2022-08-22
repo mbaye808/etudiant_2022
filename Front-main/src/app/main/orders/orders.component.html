@@ -1,0 +1,58 @@
+<div class="page-layout carded fullwidth">
+
+
+    <div class="top-bg accent"></div>
+
+    <div class="center">
+
+        
+        <div class="header accent p-24" fxLayout="row" fxLayoutAlign="start center">
+            <span style="cursor: pointer;" (click)="openDialogue()">Autres +</span>
+        </div>
+        <!-- / CONTENT HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+
+            <!-- CONTENT TOOLBAR -->
+            <div class="toolbar px-24 py-8">
+                <span>Réclamation</span>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="start">
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Type Réclamation</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Etat</th>
+            <th>Action</th>  
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let reclamations of reclamation" >
+            <td>  {{reclamations.nature}} {{reclamations.typeReclamation}} </td>
+            <td> {{reclamations.description}} </td>    
+            <td> {{reclamations.date | date:'dd/MM/yyyy'}} </td>
+            <td> {{reclamations.etat}} </td>
+            <td>
+                <!-- <button (click)="deleteReclamation(reclamations)" class="btn btn-danger" style="margin-left: 10px;">Supprimer</button> -->
+                    
+                    <button mat-icon-button color="warn" (click)="deleteReclamation(reclamations)"><mat-icon>delete_outline</mat-icon></button>
+                   
+                    <button mat-icon-button color="primary" (click)="updateReclamation(reclamations)"><mat-icon>edit</mat-icon></button>
+                    <!-- <button (click)="updateReclamation(reclamations.id)" class="btn btn-info"> Modifier</button> -->
+                </td>
+        </tr>
+    </tbody>
+</table>
+        </div>
+                
+        </div>
+
+    </div>
+
+</div>
+

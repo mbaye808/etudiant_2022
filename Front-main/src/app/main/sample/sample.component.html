@@ -1,0 +1,102 @@
+<div class="page-layout carded fullwidth">
+
+
+    <div class="top-bg accent"></div>
+
+    <div class="center">
+
+        
+        <div class="header accent p-24" fxLayout="row" fxLayoutAlign="start center">
+            <h2 class="m-0">Module de gestion des bulletins</h2>
+        </div>
+        <!-- / CONTENT HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+
+            <!-- CONTENT TOOLBAR -->
+            <div class="toolbar px-24 py-8">
+                <span>Bulletin</span>
+            </div>
+            <!-- / CONTENT TOOLBAR -->
+
+            <!-- CONTENT -->
+            
+            <div fxLayout="row" fxLayoutAlign="start" fxFlex="1 0 auto" style="font-size:20px">
+              <!--   <div fxFlex="30"  > 
+                <label  for="field_groupe"><B>AnneeAccademique</B></label>
+                    <select id="field_groupe" name="anneeAccademique" [(ngModel)]="anneeAccademique"  required (ngModelChange)= "getGroupeEtudiant()" >
+                        <option [ngValue]="anneeAccademiqueOption" *ngFor="let anneeAccademiqueOption of anneeAccademiques">{{anneeAccademiqueOption.nomAnneeAccademique}}</option>
+                    </select> 
+                </div> -->
+            <div fxFlex="30"  > 
+                <label class="form-control-label" for="field_groupe"><B>Classe</B></label>
+                    <select class="form-control-lg" id="field_groupe" name="classe" [(ngModel)]="classe"  required (ngModelChange)= "getSemestres()" >
+                        <option [ngValue]="null" selected></option>
+                        <option [ngValue]="groupeOption" *ngFor="let groupeOption of classes">{{groupeOption.code}}</option>
+                    </select>
+                    </div>
+                <div *ngIf="classe" fxFlex="30"   >
+                            <label class="form-control-label" for="field_semestre"><B>Semestre</B></label>
+                            <select class="form-control-lg" id="field_semestre" name="semestre" [(ngModel)]="semestre"  >
+                                <option [ngValue]="null" selected></option>
+                                <option *ngFor="let semestre of semestres" [ngValue]="semestre" >{{semestre.nomSemestre}}</option>
+                            </select>
+                  </div>
+                 
+                    <div  *ngIf="semestre" fxFlex="30" >
+                        <label class="form-control-label" for="field_session"><B>Session</B></label>
+                        <select class="form-control-lg" id="field_session" name="session" [(ngModel)]="session" (ngModelChange)= "getNotes()" >
+                            <option [ngValue]="null" selected></option>
+                            <option *ngFor="let session of sessions" [ngValue]="session">{{session.session}}</option>
+                        </select>
+                    </div>
+                </div> 
+   <br>
+   <br>
+       <div >
+            <table class="table table-bordered table-hover"  *ngIf="notes">
+                <tbody>
+                    <div *ngFor="let note of notes.toutues">
+                       
+                            <tr>
+                                <td width=54%> <B>Elément Constitutif</B> </td>
+                                <td width=7%> <B>Coef</B> </td>
+                                <td width=7%> <B>TP</B> </td>
+                                <td width=9% > <B>CC</B> </td>
+                                <td width=9% > <B>DS</B> </td>
+                                <td width=14%> <B>Moyenne</B> </td>
+                                <td width=14%> <B>Reclamation</B> </td>
+                            </tr> 
+                            <tr *ngFor="let not of note.provisoirs">
+                                <td width=54%> {{not.intitule}} </td>
+                                <td width=7%>{{not.coefficient}}</td>
+                                <td width=7%>{{not?.tp}}</td>
+                                <td width=9%>{{not?.cc}}</td>
+                                <td width=9%>{{not?.ds}}</td>
+                                <td  width=14% > <span *ngIf="not.moyenne">{{not?.moyenne.toFixed(2)}}</span> </td>
+                                <td width=20% ><button type="button" class="btn btn-primary btn-sm" (click)="openDialog(not.historiqueElementContitutif)">RECLAMER</button></td>
+                            </tr>
+                            <tr>
+                                <td> <B>{{note.historiqueUniteEnseignement.intitules}}</B> </td>
+                                <td colspan="2"><B> Credit: {{note.historiqueUniteEnseignement.credit}}</B></td>
+                                <td colspan="2"><B> Moyenne: {{note?.moyenneUE}}</B></td>
+                                <td> <B>{{note.absence}} Absence(s) </B></td>
+                            </tr>
+                    
+                        
+                    </div>
+                </tbody>
+            </table>
+        </div>
+    
+       
+    </div>
+            <!-- / CONTENT -->
+
+        </div>
+        <!-- / CONTENT CARD -->
+       
+    
+    <!-- / CENTER -->
+
