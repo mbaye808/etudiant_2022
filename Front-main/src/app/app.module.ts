@@ -41,10 +41,11 @@ import { AppComponent } from 'app/app.component';
 import { LayoutModule } from './layout/layout.module';
 import { SampleModule } from '././main/sample/sample.module';
 import { ReclamationModule } from '././main/reclamation/reclamation.module';
+
 import { TransfertModule } from '././main/transfert/transfert.module';
 import { UpdateModule } from '././main/update/update.module';
 import { MatConfirmDialogModule } from '././main/mat-confirm-dialog/mat-confirm-dialog.module';
-
+import { AccesModule } from '././main/acces/acces.module';
 import { CalendrierRoutingModule } from './main/calendar/calendrier-routing';
 import { CalendarModule } from './main/calendar/calendar.module';
 import { EcommerceModule } from './main/orders/orders.module';
@@ -143,6 +144,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
         LayoutModule,
         SampleModule,
         ReclamationModule,
+        AccesModule,
         TransfertModule,
         MatConfirmDialogModule,
         // Jtest5EtudiantModule,

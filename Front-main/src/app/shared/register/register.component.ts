@@ -15,6 +15,9 @@ import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { RegisterService } from '../../service/register.service';
 import { User } from 'app/core/user/user.model';
 import { Router } from '@angular/router';
+import { TransfertComponent } from 'app/main/transfert/transfert.component';
+import { MatDialog } from '@angular/material/dialog';
+import { AccesComponent } from 'app/main/acces/acces.component';
 
 
 
@@ -50,6 +53,7 @@ export class RegisterComponent implements OnInit, OnDestroy
           
           private registerService: RegisterService,
           private fb: FormBuilder,
+          private dialogRe: MatDialog,
           private etudiantService: EtudiantService
     )
     {
@@ -143,9 +147,11 @@ export class RegisterComponent implements OnInit, OnDestroy
                         ],
           
               email: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(254), Validators.email]],
-              password: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
-              confirmPassword: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]]
+              password: ['', [Validators.required, Validators.minLength(6)]],
+              confirmPassword: ['', [Validators.required]]
             
+        },{
+          validators: this.MustMatch('password', 'confirmPassword')
         });
         
       
@@ -155,6 +161,33 @@ export class RegisterComponent implements OnInit, OnDestroy
      */
    
 } 
+submitted:boolean = false;
+get f(){
+  return this.registerForm.controls
+}
+onSubmit(){
+  this.submitted = true;
+  if (this.registerForm.invalid) {
+  return;
+  }
+  }
+MustMatch(controlName: string, matchingControlName:string){
+  return (formGroup:FormGroup)=>{
+    const control = formGroup.controls[controlName];
+    const matchingControl = formGroup.controls[matchingControlName];
+
+    if(matchingControl.errors && !matchingControl.errors.MustMatch){
+      return
+    }
+    if(control.value !== matchingControl.value){
+      matchingControl.setErrors({MustMatch:true})
+    }
+    else{
+      matchingControl.setErrors(null);
+    }
+  }
+}
+
 private createUser(): User{
   return{
     ...new User(),
@@ -179,7 +212,7 @@ register(){
   this.isSave=true
   this._service.registerUserFromRemote(this.user).subscribe(
     data => {
-    alert("Compte créé avec succés");
+    //alert("Compte créé avec succés");
 
   },
   error => {
@@ -189,5 +222,13 @@ register(){
 },()=>  {this._router.navigate(['/log']);this.isSave=false})  
   
 }
+/* openDialog(){
+  let dialog=this.dialogRe.open(AccesComponent, {
+      height:'480px' ,
+      width:'550px',
+      maxHeight: '360px',
+      disableClose: true
+  });
+} */
 
 }

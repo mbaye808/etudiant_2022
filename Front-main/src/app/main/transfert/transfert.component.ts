@@ -62,7 +62,7 @@ ngOnInit(): void {
           ],
 
           dateFin: [
-            '',
+            '',            
           ],
 
           description: [
@@ -82,7 +82,6 @@ ngOnInit(): void {
           ],
           photoContentType: [
             '',
-            
           ],
 
     });

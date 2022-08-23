@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
     modules?: any[] = [
         {
          'titre' :  'Gestion des alumnis',
-         'libelle' : 'Ce module contient tout ce qui est relatif aux cours'
+         'libelle' : 'Ce module contient tout ce qui est relatif aux anciens étudiants'
         },
         {
             'titre' :  'Gestion des Reclamations',
