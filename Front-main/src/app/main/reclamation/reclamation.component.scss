@@ -4,6 +4,7 @@
  }
  .transfert{
    background-color:rgb(240, 240, 240);
+   height: 90%;
 }
 .form-control-label{
    margin-left: 2%;
@@ -22,4 +23,8 @@
    margin-left: 2%;
    width: 96%;
    border-radius: 10px;
+}
+.label{
+   text-transform: uppercase;
+   font-family: 'Times New Roman', Times, serif;
 }

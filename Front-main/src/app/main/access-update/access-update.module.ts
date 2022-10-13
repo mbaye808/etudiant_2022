@@ -1,5 +1,6 @@
 
-import { AccesComponent } from "./acces.component";
+
+import { AccessUpdateComponent } from "./access-update.component";
 
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -7,24 +8,24 @@ import { Jtest5SharedModule } from "app/shared/shared.module";
 const routes = [
     {
         path     : 'acces',
-        component: AccesComponent
+        component: AccessUpdateComponent
     }
 ];
 
 @NgModule({
     declarations: [
-        AccesComponent,
+        AccessUpdateComponent,
     ],
     imports: [
         Jtest5SharedModule,
         RouterModule.forChild(routes),
     ],
     exports     : [
-        AccesComponent
+        AccessUpdateComponent
     ],
     schemas: [ CUSTOM_ELEMENTS_SCHEMA]
 })
 
-export class AccesModule
+export class AccessUpdateModule
 {
 } 

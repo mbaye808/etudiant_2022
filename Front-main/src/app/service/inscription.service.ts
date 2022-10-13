@@ -75,12 +75,12 @@ export class InscriptionService {
     return res;
   }
 
-  /* userConnecter(): Observable<EntityResponseType> {
+   userConnecter(): Observable<EntityResponseType> {
     return this.http
       .get<User>(`${this.resourceUr2}`, { observe: 'response' })
       .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
 
-  } */
+  } 
 
   listGroupeInscrit(): Observable<any> {
     return this.http

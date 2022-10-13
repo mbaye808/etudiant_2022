@@ -1,30 +1,32 @@
 
-import { AccesComponent } from "./acces.component";
+
+
+import { ExperienceUpdateComponent } from "./experience-update.component";
 
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Jtest5SharedModule } from "app/shared/shared.module";
 const routes = [
     {
-        path     : 'acces',
-        component: AccesComponent
+        path     : 'exp',
+        component: ExperienceUpdateComponent
     }
 ];
 
 @NgModule({
     declarations: [
-        AccesComponent,
+        ExperienceUpdateComponent,
     ],
     imports: [
         Jtest5SharedModule,
         RouterModule.forChild(routes),
     ],
     exports     : [
-        AccesComponent
+        ExperienceUpdateComponent
     ],
     schemas: [ CUSTOM_ELEMENTS_SCHEMA]
 })
 
-export class AccesModule
+export class ExperienceUpdateModule
 {
 } 

@@ -17,7 +17,7 @@ import { User } from 'app/core/user/user.model';
 import { Router } from '@angular/router';
 import { TransfertComponent } from 'app/main/transfert/transfert.component';
 import { MatDialog } from '@angular/material/dialog';
-import { AccesComponent } from 'app/main/acces/acces.component';
+//import { AccesComponent } from 'app/main/acces/acces.component';
 
 
 
@@ -93,22 +93,6 @@ export class RegisterComponent implements OnInit, OnDestroy
    ngOnInit(): void
     {
         this.registerForm = this._formBuilder.group({
-            // ine           : ['', Validators.required],
-            // nom           : ['', Validators.required],
-            // prenom           : ['', Validators.required],
-            // name           : ['', Validators.required],
-            // email          : ['', [Validators.required, Validators.email]],
-            // password       : ['', Validators.required],
-            // passwordConfirm: ['', [Validators.required, confirmPasswordValidator]]
-            /* login: [
-                '',
-                [
-                  Validators.required,
-                  Validators.minLength(1),
-                  Validators.maxLength(50),
-                  Validators.pattern('^[a-zA-Z0-9!$&*+=?^_`{|}~.-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$|^[_.@A-Za-z0-9-]+$'),
-                ],
-              ], */
               dateNaiss: [
                 '',
                 [
@@ -212,7 +196,7 @@ register(){
   this.isSave=true
   this._service.registerUserFromRemote(this.user).subscribe(
     data => {
-    //alert("Compte créé avec succés");
+    alert("Compte créé avec succés");
 
   },
   error => {

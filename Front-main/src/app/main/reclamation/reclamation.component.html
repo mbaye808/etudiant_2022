@@ -17,10 +17,45 @@
   <label class="form-control-label">Saisir votre réclamation</label> <br><br>
   <textarea rows="4" cols="30" class="saisir" formControlName="description"></textarea>
  </div>
+
+ <div class="form-group" style="margin-top: 3%;">
+  <label for="field_pieceIdentite" class="label">Telecharger image</label>
+  <div>
+    <div *ngIf="reclamationForm.get('photo')!.value" class="form-text text-danger clearfix">
+      <a
+        class="pull-left"
+        (click)="openFile(reclamationForm.get('photoContentType')!.value, reclamationForm.get('photo')!.value)"
+        jhiTranslate="entity.action.open"
+        style="margin-top: 1%; cursor: pointer;"
+        >Ouvrir</a>
+      <button
+        style="margin-top: 2%;"
+        type="button"
+        (click)="reclamationForm.patchValue({ photo: null }); reclamationForm.patchValue({ photoContentType: null })"
+        class="btn btn-secondary btn-xs pull-right"
+      >
+        <fa-icon icon="times"></fa-icon>
+      </button>
+    </div>
+    <input
+      type="file"
+      id="file_pieceIdentite"
+      (change)="setFileData($event, 'photo', false)"
+    />
+  </div>
+  <input type="hidden" class="form-control" name="photo" id="field_pieceIdentite" formControlName="photo" />
+  <input
+    type="hidden"
+    class="form-control"
+    name="photoContentType"
+    id="field_pieceIdentiteContentType"
+    formControlName="photoContentType"
+  />
+</div>
  
 </form>
 
-<div mat-dialog-actions style="margin-top: 2%;">
+<div mat-dialog-actions style="margin-top: 15%;">
   <div fxLayout="row" fxLayoutAlign="space-between center" >
       <button mat-raised-button color="warn" (click)="closes()" style="margin-left: 60%;">Retour</button>
       <button mat-raised-button color="primary" aria-label="OK" (click)="reclame(); closes()" style="margin-left: 2%;" [disabled]="reclamationForm.invalid">OK</button>

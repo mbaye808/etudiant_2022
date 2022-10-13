@@ -12,6 +12,9 @@ import { IReclamation, Reclamation } from '../shared/model/reclamation.model';
 import { MatConfirmDialogComponent } from 'app/main/mat-confirm-dialog/mat-confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { UpdateComponent } from 'app/main/update/update.component';
+import { Etudiant } from 'app/shared/model/etudiant.model';
+import { IParcours } from 'app/core/user/alumni.model';
+import { IExperience } from 'app/core/user/experience.model';
 
 type EntityResponseType = HttpResponse<IReclamation>;
 type EntityArrayResponseType = HttpResponse<IReclamation[]>;
@@ -29,6 +32,14 @@ export class ReclamationService {
   private BASE_URL = "http://localhost:8080/api/reclamationsEtudiant";
 
   public resourceUrl2 = SERVER_API_URL + 'api/listeElementReclamationEtudiant/update';
+
+  private BASE_URL2 = "http://localhost:8080/api/alumniConnecte";
+
+  private BASE_URL3 = "http://localhost:8080/parcours/update";
+
+  private BASE_URL4 = "http://localhost:8080/experience/update";
+
+
 
   constructor(protected http: HttpClient, private dialogRes: MatDialog) {}
 
@@ -63,6 +74,16 @@ export class ReclamationService {
     return this.http
       .put<IReclamation>(this.resourceUrl2, copy, { observe: 'response' });
   } 
+  update2(parcours: IParcours): Observable<EntityResponseType> {
+    const copy = this.convertDateFromClient(parcours);
+    return this.http
+      .put<IParcours>(this.BASE_URL3, copy, { observe: 'response' });
+  }
+  update3(parcours: IExperience): Observable<EntityResponseType> {
+    const copy = this.convertDateFromClient(parcours);
+    return this.http
+      .put<IExperience>(this.BASE_URL4, copy, { observe: 'response' });
+  }
 
   find(id: number): Observable<EntityResponseType> {
     return this.http
@@ -128,6 +149,11 @@ openConfirmDialog(msg){
 getReclamationById(id:number): Observable<Reclamation>{
 
   return this.http.get<Reclamation>(`${this.resourceUrl}/${id}`);
+}
+
+getAlumniByIne(ine:string): Observable<Etudiant>{
+
+  return this.http.get<Etudiant>(`${this.BASE_URL2}/${ine}`);
 }
 openDialogue(reclamation){
  const dialog= this.dialogRes.open(UpdateComponent, {

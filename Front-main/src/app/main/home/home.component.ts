@@ -10,20 +10,20 @@ import {fuseAnimations} from '../../../@fuse/animations';
 export class HomeComponent implements OnInit {
     modules?: any[] = [
         {
-         'titre' :  'Gestion des alumnis',
+         'titre' :  'Alumni',
          'libelle' : 'Ce module contient tout ce qui est relatif aux anciens étudiants'
         },
         {
-            'titre' :  'Gestion des Reclamations',
-            'libelle' : 'Ce module contient tout ce qui est relatif aux absences'
+            'titre' :  'Reclamations',
+            'libelle' : 'Ce module contient tout ce qui est relatif à la gestion des réclamations de note ou autres type de réclamations'
         },
         {
-            'titre' :  'Gestion des bulletins',
-            'libelle' : 'Ce module contient tout ce qui est relatif aux bulletins'
+            'titre' :  'Bulletins et Relevés',
+            'libelle' : 'Ce module contient tout ce qui est relatif aux bulletins de notes et relevés'
         },
         {
-            'titre' :  'Gestion des Emplois du temps',
-            'libelle' : 'Ce module contient tout ce qui est relatif aux emplois du temps'
+            'titre' :  'Emplois du temps',
+            'libelle' : "Ce module contient tout ce qui est relatif à la gestion de l'horaire de l'étudiant"
         }
     ];
 

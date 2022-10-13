@@ -46,6 +46,9 @@ import { TransfertModule } from '././main/transfert/transfert.module';
 import { UpdateModule } from '././main/update/update.module';
 import { MatConfirmDialogModule } from '././main/mat-confirm-dialog/mat-confirm-dialog.module';
 import { AccesModule } from '././main/acces/acces.module';
+import { AccessUpdateModule } from '././main/access-update/access-update.module';
+import { ExperienceUpdateModule } from '././main/experience-update/experience-update.module';
+import { ExperienceModule } from '././main/experience/experience.module';
 import { CalendrierRoutingModule } from './main/calendar/calendrier-routing';
 import { CalendarModule } from './main/calendar/calendar.module';
 import { EcommerceModule } from './main/orders/orders.module';
@@ -54,6 +57,7 @@ import { AuthExpiredInterceptor } from './blocks/interceptor/auth-expired.interc
 import { AuthGuard } from './core/auth/auth.guard';
 import { AuthInterceptor } from './blocks/interceptor/auth.interceptor';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
  const appRoutes: Routes = [
@@ -90,6 +94,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     {
         path      : '**',
         redirectTo: 'order'
+    },
+    {
+        path      : '**',
+        redirectTo: 'alumni'
     }
 ]; 
 
@@ -126,6 +134,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
         MatToolbarModule,
         MatProgressSpinnerModule,
         MatIconModule,
+        MatCardModule,
         MatTableModule,
         // FontAwesomeModule, 
         // FaIconLibrary,
@@ -145,6 +154,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
         SampleModule,
         ReclamationModule,
         AccesModule,
+        AccessUpdateModule,
+        ExperienceModule,
+        ExperienceUpdateModule,
         TransfertModule,
         MatConfirmDialogModule,
         // Jtest5EtudiantModule,

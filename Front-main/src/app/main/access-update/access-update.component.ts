@@ -5,22 +5,22 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Parcours } from 'app/core/user/alumni.model';
-import { RegisterService } from 'app/service/register.service';
+import { ReclamationService } from 'app/service/reclamation.service';
 
 import * as moment from 'moment';
 
 @Component({
-    selector   : 'acces',
-    templateUrl: './acces.component.html',
-    styleUrls  : ['./acces.component.scss']
+    selector   : 'access-update',
+    templateUrl: './access-update.component.html',
+    styleUrls  : ['./access-update.component.scss']
 })
-export class AccesComponent implements OnInit
+export class AccessUpdateComponent implements OnInit
 {
 
-    alumni: Parcours = new Parcours();
+    alumni: Parcours
     alumniForm: FormGroup;
     isSave=false
-    constructor(private router: Router, private service: RegisterService,
+    constructor(private router: Router, private service: ReclamationService,
        private _formBuilder: FormBuilder,
        private dialogRe: MatDialog){}
 
@@ -33,54 +33,65 @@ ngOnInit(): void {
         ecole: [
             '',
             [
-              Validators.required,
+              
             ],
           ],
         diplome: [
             '',
             [
-              Validators.required,
+            
             ],
           ],
         domaineEtude: [
             '',
             [
-              Validators.required,
+              
             ],
           ],
-         anneeDebut: [
+          anneeDebut: [
             '',
             [
-              Validators.required,
+              
             ],
           ],
         moisDebut: [
             '',
             [
-              Validators.required,
+              
             ],
-          ], 
-          anneeFin: [
+          ],
+        anneeFin: [
             '',
             [
-              Validators.required,
+              
             ],
           ],
         moisFin: [
             '',
             [
-              Validators.required,
+              
             ],
           ], 
     });
-    
-}
+     console.log(this.alumni)
+    if(this.alumni){
+      this.alumniForm.patchValue({
+        ecole:this.alumni.ecole,
+        diplome:this.alumni.diplome,
+        domaineEtude:this.alumni.domaineEtude,
+        anneeDebut:this.alumni.anneeDebut,
+        moisDebut:this.alumni.moisDebut,
+        anneeFin:this.alumni.anneeFin,
+        moisFin:this.alumni.moisFin,         
 
+      })
+    } 
 
+  }
 private createAlumni(): Parcours{
     return{
       ...new Parcours(),
-      id: null,
+      id: this.alumni.id,
       ecole: this.alumniForm.get(['ecole'])!.value,
       diplome: this.alumniForm.get(['diplome'])!.value,
       domaineEtude: this.alumniForm.get(['domaineEtude'])!.value,
@@ -90,25 +101,16 @@ private createAlumni(): Parcours{
       moisFin: this.alumniForm.get(['moisFin'])!.value, 
     }
   }
-saveAlumni(){
-
+  onSubmit(){
     this.alumni=this.createAlumni();
-    this.isSave=true
-    console.log(this.alumni)
-    this.service.registerAlumni(this.alumni).subscribe(
-      data => {
-      alert("Informations enregistrées");
+    this.service.update2(this.alumni).subscribe(data =>{
       
+      this.close()
+    },);
+    
+  }
+  close(): void{
   
-    },
-    error => {
-      this.isSave=false
-      alert("echec, verifier vos information");
-  },()=>  {this.router.navigate(['/alumni']);this.isSave=false}) 
-} 
-closes(): void{
-
-  this.dialogRe.closeAll();
-
-}
+    this.dialogRe.closeAll();
+  }
 }

@@ -1,37 +1,86 @@
 
-<div class="page-layout carded fullwidth">
+<div class="">
+    <mat-card class="mycard">
+    <mat-card-header *ngIf="varAlumni">
+        <img mat-card-avatar src="assets/images/avatars/profile.jpg">
+        <mat-card-title>{{varAlumni.firstName}} {{varAlumni.lastName}}</mat-card-title>
+        <mat-card-subtitle>{{varAlumni.email}}</mat-card-subtitle>
+    </mat-card-header>
+    </mat-card>
 
+    <mat-card class="mycards">
+        <mat-card-header >
+            <mat-card-title style="font-weight: bold; font-size: 150%;">Formation</mat-card-title>
+            <span style="cursor: pointer; margin-left: 75%;" (click)="openDialogue()">
+                <mat-icon mat-icon-button>add</mat-icon></span>
+            </mat-card-header>
+        <mat-card-header>
+            <mat-card-title ></mat-card-title>
+           
+                    <mat-card-subtitle *ngFor="let parcour of parcours" style="font-family: 'Times New Roman', Times, serif;">
+                        <hr style="width: 390%; color: rgb(150, 154, 155);">
+                        <span style="cursor: pointer; margin-left: 370%;" (click)="openDialogue2(parcour)">
+                            <mat-icon mat-icon-button>edit</mat-icon>
+                        
+                        </span>
+                            
+                        {{parcour.ecole}} <br>
+                        {{parcour.diplome}} en
+                        {{parcour.domaineEtude}} <br>
+                        {{parcour.moisDebut}}. {{parcour.anneeDebut}} - {{parcour.moisFin}}. {{parcour.anneeFin}} 
+                    <!-- <hr style="width: 420%; color: rgb(150, 154, 155);"> -->
+                    </mat-card-subtitle>
+                         
+        </mat-card-header>
+    </mat-card>
 
-    <div class="top-bg accent"></div>
+    <mat-card class="mycard1">
+            <mat-card-header>
+                <mat-card-title style="font-weight: bold; font-size: 150%;">Experiences</mat-card-title>
+                <span style="cursor: pointer; margin-left: 75%;" (click)="openDialogue3()">
+                    <mat-icon mat-icon-button>add</mat-icon></span>
+            </mat-card-header>
+        <mat-card-header>
+            <mat-card-title ></mat-card-title>
+                    <mat-card-subtitle *ngFor="let experience of experiences" style="font-family: 'Times New Roman', Times, serif;">
+                        <hr style="width: 470%; color: rgb(150, 154, 155);">
+                        <span style="cursor: pointer; margin-left: 455%;" (click)="openDialogue4(experience)">
+                            <mat-icon mat-icon-button>edit</mat-icon>
+                        </span>
+                        {{experience.intitulePoste}} <br>
+                        {{experience.typeEmploi}} <br>
+                        {{experience.lieu}} <br>
+                        {{experience.moisDebut}}. {{experience.anneeDebut}} - {{experience.moisFin}}. {{experience.anneeFin}} <br>
+                        {{experience.secteur}} 
+                    </mat-card-subtitle>
+            </mat-card-header>
+            </mat-card>
+</div>
+    <!-- <div class="top-bg accent"></div> -->
 
-    <div class="center">
+    <!-- <div class="center">
 
         
         <div class="header accent p-24" fxLayout="row" fxLayoutAlign="start center">
-            <span style="cursor: pointer;">Module de gestion des alumnis</span>
-        </div>
-        <!-- / CONTENT HEADER -->
+            <span style="font-weight: bold;">ALUMNI ESP</span>
+            <span style="cursor: pointer; margin-left: 60%;" (click)="openDialogue()">Parcours</span>
+            <span style="cursor: pointer; margin-left: 2%;" (click)="openDialogue2()">Experience Professionnelle</span>
+            <span style="cursor: pointer; margin-left: 2%;">Offre</span>
+        </div> -->
+        <!-- <div class="content-card">
 
-        <!-- CONTENT CARD -->
-        <div class="content-card">
-
-            <!-- CONTENT TOOLBAR -->
             <div class="toolbar px-24 py-8">
-                <span></span>
+
             </div>
 
-            <div fxLayout="row" fxLayoutAlign="start">
-
-                <form>
-                    <div >
-                    <label class="form-control-label"> Parcour </label>
-                    <span style="cursor: pointer; margin-left: 550%;"> + </span> <br><br>
-                </div>
-                    <label class="form-control-label"> <span> Experience Professionnelle </span> + </label> <br><br>
-                    <label class="form-control-label"> <span> Année Promotion </span> +  </label> 
-                </form>
-            </div>
+        </div> -->
+        <!-- <div class="content">
+        <img style="width: 100%; height: 50%;" src="assets/images/logos/esp.jpg" alt="photo">
+        <div class="text">
+            <h1>Découvrez Nos Diplomés</h1>
         </div>
-    </div>
-</div>
+    </div> -->
+    <!-- </div> -->
+    
+
 

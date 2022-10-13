@@ -130,32 +130,4 @@ public class ReclamationResource {
 		return ResponseEntity.ok(response);
 	}
    
-    @PutMapping("/reclamations/{id}")
-	public ResponseEntity<Reclamation> updateReclamation(@PathVariable Long id, @RequestBody Reclamation reclamationDetails){
-		Reclamation reclamation = reclamationRepository.findById(id)
-				.orElseThrow(() -> new ResourceNotFoundException("Employee not exist : " +id));
-		
-		reclamation.setAnneeAccademique(reclamationDetails.getAnneeAccademique());
-		reclamation.setDate(reclamationDetails.getDate());
-        reclamation.setDateDebut(reclamationDetails.getDateDebut());
-        reclamation.setDateFin(reclamationDetails.getDateFin());
-        reclamation.setDescription(reclamationDetails.getDescription());
-        reclamation.setEnseignement(reclamationDetails.getEnseignement());
-        reclamation.setEtat(reclamationDetails.getEtat());
-        reclamation.setGroupe(reclamationDetails.getGroupe());
-        reclamation.setHistoriqueElementContitutif(reclamationDetails.getHistoriqueElementContitutif());
-        reclamation.setId(reclamationDetails.getId());
-        reclamation.setIne(reclamationDetails.getIne());
-        reclamation.setNature(reclamationDetails.getNature());
-        reclamation.setNoteReclamation(reclamationDetails.getNoteReclamation());
-        reclamation.setPhoto(reclamationDetails.getPhoto());
-        reclamation.setPhotoContentType(reclamationDetails.getPhotoContentType());
-        reclamation.setSemestre(reclamationDetails.getSemestre());
-        reclamation.setSession(reclamationDetails.getSession());
-        reclamation.setTypeReclamation(reclamationDetails.getTypeReclamation());
-		
-		Reclamation updateReclamation = reclamationRepository.save(reclamation);
-		
-		return ResponseEntity.ok(updateReclamation);
-	}
 }

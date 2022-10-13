@@ -1,0 +1,96 @@
+
+<mat-icon id="close-icon" (click)="close()" style="margin-left: 95%; cursor: pointer;" class="fer">close</mat-icon>
+<div class="logo">
+    <img src="assets/images/logos/logo.png">
+</div>
+
+<div class="title">Modifier vos experiences professionnelles</div>
+
+<form name="alumniForm" [formGroup]="alumniForm" novalidate (ngSubmit)="onSubmit()" action="">
+   <div class="sep">
+        <label>Intitulé de poste</label><br><br>
+        <textarea style="width: 100%; border-radius: 8px;" placeholder="ex: Developpeur informatique" formControlName="intitulePoste"></textarea>
+        <br><br>
+
+        <label>Type d'emploi</label><br><br>
+        <select style="width: 100%; border-radius: 8px;" formControlName="typeEmploi">
+            <option selected disabled>Veuillez sélectionner</option>
+            <option>Temps plein</option>
+            <option>Temps partiel</option>
+            <option>Indépendant</option>
+            <option>Freelance</option>
+            <option>CDD</option>
+            <option>Stage</option>
+            <option>Contrat en alternance</option>
+            <option>Seasonal</option>
+        </select>
+        <br><br>
+
+        <label>Nom de l'entreprise</label><br><br>
+        <textarea style="width: 100%; border-radius: 8px;" placeholder="ex: Centre de ressources et d'expertise de l'ESP" formControlName="nomEntreprise"></textarea>
+        <br><br>
+
+        <label>Lieu</label><br><br>
+        <textarea style="width: 100%; border-radius: 8px;" placeholder="ex: Dakar, Senegal" formControlName="lieu"></textarea>
+        <br><br>
+
+        <label>Date Début</label><br><br>
+        <select style="width: 47.5%; border-radius: 8px;" formControlName="moisDebut">
+            <option selected disabled>Mois</option>
+            <option>Janvier</option>
+            <option>Fevrier</option>
+            <option>Mars</option>
+            <option>Avril</option>
+            <option>Mai</option>
+            <option>Juin</option>
+            <option>Juillet</option>
+            <option>Aout</option>
+            <option>Septembre</option>
+            <option>Octobre</option>
+            <option>Novembre</option>
+            <option>Decembre</option>
+        </select>
+        <span style="margin-left: 20px;"></span>
+        <select style="width: 47.5%; border-radius: 8px;" formControlName="anneeDebut">
+            <option selected disabled>Annee</option>
+            <option>2021</option>
+            <option>2022</option>
+        </select>
+        <br><br>
+        <label>Date de Fin</label><br><br>
+        <select style="width: 47.5%; border-radius: 8px;" formControlName="moisFin">
+            <option selected disabled>Mois</option>
+            <option>Janvier</option>
+            <option>Fevrier</option>
+            <option>Mars</option>
+            <option>Avril</option>
+            <option>Mai</option>
+            <option>Juin</option>
+            <option>Juillet</option>
+            <option>Aout</option>
+            <option>Septembre</option>
+            <option>Octobre</option>
+            <option>Novembre</option>
+            <option>Decembre</option>
+        </select>
+        <span style="margin-left: 20px;"></span>
+        <select style="width: 47.5%; border-radius: 8px;" formControlName="anneeFin">
+            <option selected disabled>Annee</option>
+            <option>2024</option>
+            <option>2025</option>
+        </select>
+
+        <label>Secteur</label><br><br>
+        <textarea style="width: 100%; border-radius: 8px;" placeholder="ex: Logiciels informatiques" formControlName="secteur"></textarea>
+        <br><br>
+
+        <label>Titre du profil</label><br><br>
+        <textarea style="width: 100%; border-radius: 8px;" placeholder="ex: Etudiant(e) à l'ecole supeieure" formControlName="titreProfil"></textarea>
+    
+</div>
+<button (click)="onSubmit(); close()" mat-raised-button color="accent"
+ aria-label="SOUMETTRE" class="soumet">
+                   MODIFIER                
+</button>
+</form>
+

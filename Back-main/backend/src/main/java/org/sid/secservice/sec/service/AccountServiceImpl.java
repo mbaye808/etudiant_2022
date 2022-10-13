@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
-
 import org.sid.secservice.sec.entities.AppRole;
 import org.sid.secservice.sec.entities.AppUser;
 import org.sid.secservice.sec.repo.AppRoleRepository;
@@ -24,8 +23,10 @@ public class AccountServiceImpl implements AccountService{
 
 	@Autowired
 	private AppUserRepository appUserRepository;
+	
 	@Autowired
 	private AppRoleRepository appRoleRepository;
+
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -101,4 +102,5 @@ public class AccountServiceImpl implements AccountService{
         }
         return null;
     }
+
 }

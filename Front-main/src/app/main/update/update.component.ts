@@ -32,8 +32,6 @@ export class UpdateComponent implements OnInit {
 
 
   constructor(private reclamationService: ReclamationService,
-   private route: ActivatedRoute,
-   private router: Router,
    private dataUtils:JhiDataUtils,
    private dialogRe: MatDialog, 
    private _formBuilder: FormBuilder, 

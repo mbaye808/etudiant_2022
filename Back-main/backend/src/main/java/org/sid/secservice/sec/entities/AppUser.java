@@ -29,10 +29,6 @@ public class AppUser {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-/* 	@NotEmpty
-	@Size(min = 2, message = "Le username doit avoir au moins deux caracteres")
-	private String username; */
-	
 	@Column(name = "firstName", nullable = false)
 	@NotEmpty
 	@Size(min = 2, message = "Le prenom doit avoir au moins deux caracteres")
@@ -50,7 +46,9 @@ public class AppUser {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private String dateNaiss;
 	
+	@Column(name = "ine", nullable = false)
 	@NotEmpty
+	@Size(min = 9, message = "L'INE doit avoir au moins 9 caracteres")
 	private String ine;
 	
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
@@ -61,25 +59,6 @@ public class AppUser {
 	@ManyToMany(fetch = FetchType.EAGER)
 	private Collection<AppRole> appRole = new ArrayList<>();
 	
-
-	
-	/* public AppUser() {
-	}
-
-
-	public AppUser(String firstName, String lastName, String email, String dateNaiss, String ine,
-			String password, Collection<AppRole> appRoles) {
-		super();
-		// this.username = username;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.dateNaiss = dateNaiss;
-		this.ine = ine;
-		this.password = password;
-		this.appRole = appRole;
-		
-	} */
 	
 
 	public Long getId() {

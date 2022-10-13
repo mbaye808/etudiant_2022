@@ -15,6 +15,7 @@ import javax.validation.Valid;
 import org.sid.secservice.sec.JWTUtil;
 import org.sid.secservice.sec.entities.AppRole;
 import org.sid.secservice.sec.entities.AppUser;
+import org.sid.secservice.sec.entities.Etudiant;
 import org.sid.secservice.sec.entities.Token;
 import org.sid.secservice.sec.repo.EtudiantRepository;
 import org.sid.secservice.sec.service.AccountService;
@@ -27,6 +28,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -71,7 +73,7 @@ public class AccountRestController {
 		String tempMail = appUser.getEmail();
 		AppUser userObj = null;
 
-		if(tempIne != null &&   !"".equals(tempIne)) {
+		if(tempIne != null &&  !"".equals(tempIne)) {
 			AppUser userobj = accountService.fetchAppUserByIne(tempIne);
 			if(userobj != null) {
 				throw new Exception("L'INE "+tempIne+" existe, veillez entrer le bon INE !!!");
@@ -80,8 +82,9 @@ public class AccountRestController {
 			if(userobj != null) {
 				throw new Exception("L'email "+tempMail+" existe, veillez entrer le bon mail !!!");
 			}
-			
-				if( etudiantRepository.findByIne(tempIne)==null) {
+			//System.out.println(etudiantRepository.findByIne(tempIne));
+				if( !etudiantRepository.findByIne(tempIne).isPresent()) {
+					//System.out.println(etudiantRepository.findByIne(tempIne));
 					throw new Exception("L'Etudiant n est pas dans la base de données");
 				}
 				userObj = accountService.saveUser(appUser);
@@ -161,6 +164,10 @@ public class AccountRestController {
 	public Optional<AppUser> userConnecter() {
 		System.out.println("IN userConnecter");
 		return accountServiceImpl.getUserWithAuthorities();
+	}
+	@GetMapping(path = "/alumniConnecte/{ine}")
+	public Optional<Etudiant> nomAlumni(@PathVariable String ine){
+		return etudiantRepository.findByIne(ine);
 	}
 
 

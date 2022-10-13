@@ -105,10 +105,10 @@ export class SampleComponent implements OnInit
     }
     openDialog(historiqueElementContitutif){
         let dialog=this.dialogRe.open(ReclamationComponent, {
-            height:'480px' ,
+            height:'500px' ,
             width:'550px',
-            maxHeight: '360px',
-            position: { top: "10px" },
+            //maxHeight: '360px',
+            position: { top: "10px", left: "40%" },
             disableClose: true
         });
         dialog.componentInstance.semestre=this.semestre
